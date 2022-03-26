@@ -5,41 +5,16 @@ const blacklist = [
 
     // These phrases are often used in spam
     "I need you to design and build",
-    "same to same",
-    "look same like",
+    "like this",
     "build me",
     "I want someone to",
     "like http",
-    "similar website like",
-    ".ml",
-    ".in",
-    ".xyz",
-    "like this",
+    ".ml", ".in", ".xyz", ".tk", // some of them want you to visit their shitty websites that are based on free domain names
+    "@gmail.com", // they often want you to message them directly via email
 
     // These keywords are used to exclude projects that are not for me
-    // "Shopify",
-    // "magento",
-    // "react",
-    // "angular",
-    // "payment",
-    // "chat bot",
-    // "Troubleshooting",
-    // "Administrator",
-    // "CRM",
-    // "PHP developer",
-    // "SEO expert",
-    // "Web Scraper",
-    // "casino",
-    // "gambling",
-    // "blogspot",
-    // "android",
-    // "ios",
-    // "devops",
-    // "laravel",
-    // "clickfunnel",
-    // "xero",
-    // "android",
-    // "django",
+    "angular",
+    "chat bot",
 
 ];
 
@@ -59,13 +34,37 @@ const hideAllSpam = function(){
     
             blacklist.forEach(function(word){
                 if( text.includes(word.toLowerCase()) ){
-                    card.style.display = "none";
+                    card.style.height = "60px";
+                    card.style.opacity = "0.15";
+                    card.style.overflow = "hidden";
                     console.log("Hidden by keyword: ", word);
                 }
             });
     
-
         }
+
+
+        // 
+
+    });
+
+
+    let allDescriptions = document.querySelectorAll('[data-test="job-description-text"]');
+
+    allDescriptions.forEach(function(item){
+
+        const card = item.closest(".up-card-hover");
+
+        let text = item.textContent.toLowerCase();
+
+        blacklist.forEach(function(word){
+            if( text.includes(word.toLowerCase()) ){
+                card.style.height = "60px";
+                card.style.opacity = "0.15";
+                card.style.overflow = "hidden";
+                console.log("Hidden by keyword: ", word);
+            }
+        });
 
     });
     
