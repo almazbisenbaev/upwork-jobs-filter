@@ -10,7 +10,7 @@ const blacklist = [
     "I want someone to",
     "like http",
     ".ml", ".in", ".xyz", ".tk", // some of them want you to visit their shitty websites that are based on free domain names
-    "@gmail.com", // they often want you to message them directly via email
+    "@gmail.com", "whatsapp", // they often want you to message them directly via email or whatsapp
 
     // These keywords are used to exclude projects that are not for me
     "angular",
@@ -76,8 +76,10 @@ const hideAllSpam = function(){
 window.onload = function() {
 
     console.log('Upwork filter extension is working');
+    console.log('Author: bisenbaev.com');
 
-    setTimeout(function(){
+    // Hides all shitty jobs every 2 seconds
+    setInterval(function(){
         if(shouldHideSpamJobs){
             hideAllSpam();
         }
